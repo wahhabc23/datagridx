@@ -267,7 +267,7 @@ abstract class Grid
      */
     private function getPaginationLinkView()
     {
-        return 'datagrix::pagination.bootstrap4';
+        return 'datagridx::pagination.bootstrap4';
     }
 
     private function setFilters()
