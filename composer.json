@@ -1,0 +1,36 @@
+{
+    "name": "wahhabc23/datagridx",
+    "description": "Grid view for laravel",
+    "type": "library",
+    "keywords": [
+      "wahhabc23",
+      "bootstrap",
+      "laravel-grid",
+      "laravel",
+      "laravel8",
+      "datagridx"
+    ],
+    "require": {
+        "php": ">=7.3"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Abdul Wahhab",
+            "email": "wahhabc23@gmai.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "DataGridX\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "DataGridX\\Providers\\DataGridServiceProvider"
+            ]
+        }
+    },
+    "minimum-stability": "dev"
+}
