@@ -14,12 +14,12 @@
         <thead>
             <tr>
                 @if($grid->showSerialNumbers)
-                    <th>{{ $grid->serialNoText }}</th>
+                    <th class="{{ $grid->serialNumberHeadCss }}">{{ $grid->serialNoText }}</th>
                 @endif
 
                 
                 @foreach ($grid->getTableHeaders() as $attribute => $label)
-                    <th>
+                    <th class="{{ $grid->contentHeadCssClass }}">
                         @if ($grid->isSortable($attribute))
                             <a href="{{ route( request()->route()->getName(), array_merge(request()->route()->parameters, ['sort' => $attribute, 'orderby' => $grid->getOrderBy()]) ) }}">
                                 {{ $label }}

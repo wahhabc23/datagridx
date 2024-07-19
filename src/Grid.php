@@ -80,6 +80,24 @@ abstract class Grid
      */
     public $showSerialNumbers = true;
 
+
+    /**
+     * Add css to serial number head
+     * @var string
+     */
+    public $serialNumberHeadCss = 'text-center';
+    /**
+     * Add css to serial number body
+     * @var string
+     */
+    public $serialNumberCss = 'text-center';
+
+    /**
+     * Add css to content head
+     * @var string
+     */
+    public $contentHeadCssClass = '';
+
     /**
      * Data source query
      * 
@@ -301,7 +319,7 @@ abstract class Grid
         {
             $html = "<tr data-key='114'>";
             if ($this->showSerialNumbers){
-                $html .= "<td>{$index}</td>";
+                $html .= "<td class='{$this->serialNumberCss}'>{$index}</td>";
             }
             foreach ($this->tableColumns as $attribute => $column)
             {
