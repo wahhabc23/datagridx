@@ -1,6 +1,6 @@
 <div class="{{ $grid->wrapperClass }}">
     @if ($grid->showPaginationSummary())
-        <div classs="{{ $grid->paginationSummaryClass }}">
+        <div class="{{ $grid->paginationSummaryClass }}">
             Showing {{ ($grid->getPaginator()->currentpage() - 1 ) * $grid->getPaginator()->perpage() + 1 }}
                 @if ($grid->getPaginator()->currentpage() * $grid->getPaginator()->perpage() < $grid->getPaginator()->total())
                     to {{ $grid->getPaginator()->currentpage() * $grid->getPaginator()->perpage() }}
