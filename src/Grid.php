@@ -147,6 +147,19 @@ abstract class Grid
      */
     private $filterParams;
 
+
+    /**
+     * Form submit on change of filters
+     * @var bool
+     */
+    public $onChangeFiltersSubmit = false;
+
+    /**
+     * Show reset button
+     * @var bool
+     */
+    public $showResetButton = false;
+
     /**
      * Creates a new instance
      * 
@@ -478,6 +491,7 @@ abstract class Grid
      */
     public function scripts()
     {
+
         $scripts =<<<'EOT'
             <script type="application/javascript">
                 function confirmDelete(formId)
@@ -486,8 +500,24 @@ abstract class Grid
                         document.getElementById(formId).submit();
                     }
                 }
+
+            EOT;
+
+            if($this->onChangeFiltersSubmit){
+                foreach ($this->filters as $filter) {
+                    if (!empty($filter)) {
+                        $scripts .= "document.getElementById('" . $filter['field'] . "').addEventListener('change', data_grid_x_submit);";
+                    }
+                }
+            }
+            $scripts .=<<<'EOT'
+            function data_grid_x_submit(){
+                document.getElementById('grid-filter').submit();
+            }
+
             </script>
-        EOT;
+            EOT;
+
 
         return $scripts;
     }

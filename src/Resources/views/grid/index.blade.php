@@ -43,22 +43,35 @@
                         <td>&nbsp;</td>
                     @elseif ($filter['type'] == 'text')
                         <td>
-                            <input type="text" class="form-control" name="{{ $filter['field'] }}" form="grid-filter" value="{{ $filter['value'] }}">
+                            <input type="text" id="{{ $filter['field'] }}" class="form-control" name="{{ $filter['field'] }}" form="grid-filter" value="{{ $filter['value'] }}">
                         </td>
                     @elseif ($filter['type'] == 'select')
                         <td>
-                            <select class="form-control" name="{{ $filter['field'] }}" form="grid-filter">
+                            <select class="form-control" name="{{ $filter['field'] }}" id="{{ $filter['field'] }}" form="grid-filter">
                                 <option value=''>All</option>
                                 @foreach ($filter['options'] as $key => $value)
                                     <option {{ $filter['value'] == $key ? "Selected" : "" }} value="{{ $key }}"> {{ $value }} </option>
                                 @endforeach
-                            </select>                        
+                            </select>
                         </td>
                     @endif
                 @endforeach
                 <td>
+                    @if ($grid->showResetButton)
+                    <div class="row">
+                        <div class="col-md-6">
+                            <button type="submit" class="btn btn-outline-primary grid-filter-button" title="filter data" form="grid-filter">Filter&nbsp;<i class="fa fa-filter"></i>
+                            </button>
+                        </div>
+                        <div class="col-md-6">
+                            <a href="{{ route(request()->route()->getName()) }}" style="color:red" class="btn btn-link">Reset</a>
+                        </div>
+                    </div>
+                    @else
                     <button type="submit" class="btn btn-outline-primary grid-filter-button" title="filter data" form="grid-filter">Filter&nbsp;<i class="fa fa-filter"></i>
                     </button>
+                    @endif
+                    
                 </td>
             </tr>
             @endif
